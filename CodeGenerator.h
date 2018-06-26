@@ -1,0 +1,30 @@
+#ifndef CG_H
+#define CG_H
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include "LexicalAnalyzer.h"
+
+using namespace std;
+
+class CodeGen 
+{
+    public:
+	CodeGen (string filename, LexicalAnalyzer * L);
+	CodeGen ();
+	~CodeGen ();
+	string MakeCode (int tabs);
+	string MakeListCode();
+	int GetFuncs ();
+	void WriteCode (int tabs, string code);
+	
+ private:
+	LexicalAnalyzer * lex;
+	ofstream cpp;
+	
+	vector<pair<string,token_type>> lexemes;
+	int cl;
+};
+
+#endif
